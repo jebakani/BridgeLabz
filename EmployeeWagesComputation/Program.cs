@@ -13,6 +13,7 @@ namespace EmployeeWagesComputation
         /// UC1- Finding out whether employee is present or absent
         /// UC2- Calculating the daily wages of the Employee
         /// UC3- Adding Part time employee and Calculate the Wages
+        /// UC4- Calculating above UC using switch case 
         /// </summary>
         /// <param name="args">The arguments.</param>
         static void Main(string[] args)
@@ -28,22 +29,20 @@ namespace EmployeeWagesComputation
             //Generating Random value by calling Next Method
             int empInput= random.Next(0, 3);
             
-            // Executing select statement for checking employee is Full time or Part time or Absent
-            if(empInput==IS_FULL_TIME)
+            //Checking employee status using switch case statement
+            switch(empInput)
             {
-                Console.WriteLine("Full Time Employee");
-                empHrs = 8;
-            }
-
-            else if(empInput==IS_PART_TIME)
-            {
-                Console.WriteLine("Part Time Employee");
-                empHrs = 4;
-            }
-
-            else
-            {
-                Console.WriteLine("Employee is absent");
+                case IS_FULL_TIME:
+                    Console.WriteLine("Full time Employee");
+                    empHrs = 8;
+                    break;
+                case IS_PART_TIME:
+                    Console.WriteLine("Part time Employee");
+                    empHrs = 4;
+                    break;
+                default:
+                    Console.WriteLine("Employee is Absent");
+                    break;
             }
 
             //calculating Daily wages of Employee by Working Hours
