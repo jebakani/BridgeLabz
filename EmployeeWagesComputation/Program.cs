@@ -19,11 +19,15 @@ namespace EmployeeWagesComputation
         /// UC4- Calculating above UC using switch case
         /// UC5- Calculating Monthly Wages of Employee
         /// UC6- Calculating The wages till the condition of 100hr or for 20days
+        /// UC7- Computing the Employee wages using class method
         /// </summary>
         /// <param name="args">The arguments.</param>
-        static void Main(string[] args)
+        /// 
+
+
+        //class method to compute the employee wages
+        public static void ComputeEmployeeWage()
         {
-            Console.WriteLine("Welcome to Employee Wages Computation");
             //initialize local variable 
             int empHrs = 0;
             int empWages = 0;
@@ -32,12 +36,12 @@ namespace EmployeeWagesComputation
             int day = 0;
             //Creating object or instance of Random class
             Random random = new Random();
-          
+
 
             //Calculatin monthly Wages for 20days or for 100Hrs of work
-            while(day<=TOTAL_WORKING_DAY && workingHr<TOTAL_WORKING_HR)
+            while (day <= TOTAL_WORKING_DAY && workingHr < TOTAL_WORKING_HR)
             {
-                
+
 
                 //Generating Random value by calling Next Method
                 int empInput = random.Next(0, 3);
@@ -60,14 +64,23 @@ namespace EmployeeWagesComputation
                 empWages = empHrs * EMP_RATE_PER_HR;
                 monthlyWages = monthlyWages + empWages;
                 workingHr += empHrs;
-                if(empInput!=0)
+
+                if (empInput != 0)
                 {
                     day++;
                 }
 
             }
 
-            Console.WriteLine(" Wages of the Employee for "+workingHr+ " Hour or "+day+" days = "+monthlyWages);
+            Console.WriteLine(" Wages of the Employee for " + workingHr + " Hour or " + day + " days = " + monthlyWages);
+        }
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Welcome to Employee Wages Computation");
+
+            //calling the class method
+            ComputeEmployeeWage();
             Console.Read();
         }
     }
