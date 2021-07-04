@@ -17,6 +17,7 @@ namespace EmployeeWagesComputation
         /// UC10-Manage multiple companies using array
         /// UC11-Creating API procedure
         /// UC12-Manage multiple companies using Array list
+        /// UC13-Stores the daily wages of the employee
         /// </summary>
         /// <param name="args">The arguments.</param>
         /// 

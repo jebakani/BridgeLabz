@@ -28,6 +28,7 @@ namespace EmployeeWagesComputation
             foreach(EmployeeDetails employee in this.employeeDetailsList)
             {
                 employee.SetEmployeeWage(this.ComputeEmployeeWage(employee));
+                employee.DisplayDailyWage(employee);
                 Console.WriteLine(employee.toString());
             }
         }
@@ -68,6 +69,8 @@ namespace EmployeeWagesComputation
 
                 //calculating Daily wages of Employee by Working Hours
                 empWages = empHrs * details.employeeRatePerHr;
+                //sets the daily wage 
+                details.SetDailyWage(empWages,details);
                 monthlyWages+= empWages;
                 workingHr += empHrs;
 
