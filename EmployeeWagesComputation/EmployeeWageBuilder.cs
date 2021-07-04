@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeWagesComputation
 {
-    class EmployeeWageBuilder
+    class EmployeeWageBuilder : IComputeEmpWage
     {
         //adding constant global variable
         const int IS_FULL_TIME = 1;
