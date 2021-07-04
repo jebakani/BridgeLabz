@@ -13,14 +13,19 @@ namespace EmployeeWagesComputation
         const int IS_PART_TIME = 2;
 
         LinkedList<EmployeeDetails> employeeDetailsList;
+        Dictionary<string, EmployeeDetails> companyList;
+
+        //creating object for the list and dictionary
         public EmployeeWageBuilder()
         {
-            this.employeeDetailsList = new LinkedList<EmployeeDetails>(); 
+            this.employeeDetailsList = new LinkedList<EmployeeDetails>();
+            this.companyList = new Dictionary<string, EmployeeDetails>();
         }
         public void addDetail(string companyName, int employeeRatePerHr, int maxWorkingDays, int maxWorkingHrs)
         {
             EmployeeDetails employee= new EmployeeDetails( companyName, employeeRatePerHr, maxWorkingDays, maxWorkingHrs);
             this.employeeDetailsList.AddLast(employee);
+            this.companyList.Add(companyName, employee);
         }
 
         public void ComputeWage()
@@ -28,7 +33,12 @@ namespace EmployeeWagesComputation
             foreach(EmployeeDetails employee in this.employeeDetailsList)
             {
                 employee.SetEmployeeWage(this.ComputeEmployeeWage(employee));
-                employee.DisplayDailyWage(employee);
+                Console.WriteLine("enter 1 if daily wages has to be displayed");
+                int choice = Convert.ToInt32(Console.ReadLine());
+                if (choice == 1)
+                {
+                    employee.DisplayDailyWage(employee);
+                }
                 Console.WriteLine(employee.toString());
             }
         }
@@ -85,6 +95,10 @@ namespace EmployeeWagesComputation
             return monthlyWages;
         }
 
+        public int GetEmployeeWage(string company)
+        {
+            return (this.companyList[company].totalWages);
+        }
       
     }
 }

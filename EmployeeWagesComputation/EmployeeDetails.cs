@@ -13,7 +13,7 @@ namespace EmployeeWagesComputation
         public int employeeRatePerHr;
         public int maxWorkingDays;
         public int maxWorkingHrs;
-        private int totalWages;
+        public int totalWages;
         private LinkedList<int> dailywage;
 
         //Assign the values passed during object creation to current variables
