@@ -12,23 +12,24 @@ namespace EmployeeWagesComputation
         const int IS_FULL_TIME = 1;
         const int IS_PART_TIME = 2;
 
-        LinkedList<EmployeeDetails> employeeDetailsList;
+        EmployeeDetails[] employeeDetails;
+        int numOfCompany = 0;
         public EmployeeWageBuilder()
         {
-            this.employeeDetailsList = new LinkedList<EmployeeDetails>(); 
+            this.employeeDetails= new EmployeeDetails[10]; 
         }
         public void addDetail(string companyName, int employeeRatePerHr, int maxWorkingDays, int maxWorkingHrs)
         {
-            EmployeeDetails employee= new EmployeeDetails( companyName, employeeRatePerHr, maxWorkingDays, maxWorkingHrs);
-            this.employeeDetailsList.AddLast(employee);
+            employeeDetails[this.numOfCompany]= new EmployeeDetails( companyName, employeeRatePerHr, maxWorkingDays, maxWorkingHrs);
+            numOfCompany++;
         }
 
         public void ComputeWage()
         {
-            foreach(EmployeeDetails employee in this.employeeDetailsList)
+            for(int i=0;i<numOfCompany;i++)
             {
-                employee.SetEmployeeWage(this.ComputeEmployeeWage(employee));
-                Console.WriteLine(employee.toString());
+                employeeDetails[i].SetEmployeeWage(this.ComputeEmployeeWage(this.employeeDetails[i]));
+                Console.WriteLine(this.employeeDetails[i].toString());
             }
         }
 
