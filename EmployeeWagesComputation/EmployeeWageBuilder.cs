@@ -12,22 +12,27 @@ namespace EmployeeWagesComputation
         const int IS_FULL_TIME = 1;
         const int IS_PART_TIME = 2;
 
-        //global variables
-        string companyName;
-        int employeeRatePerHr;
-        int maxWorkingDays;
-        int maxWorkingHrs;
-        private int totalWages;
-
-        //Assign the values passed during object creation to current variables
-        public EmployeeWageBuilder(string companyName, int employeeRatePerHr, int maxWorkingDays, int maxWorkingHrs)
+        LinkedList<EmployeeDetails> employeeDetailsList;
+        public EmployeeWageBuilder()
         {
-            this.companyName = companyName;
-            this.employeeRatePerHr = employeeRatePerHr;
-            this.maxWorkingDays = maxWorkingDays;
-            this.maxWorkingHrs = maxWorkingHrs;
+            this.employeeDetailsList = new LinkedList<EmployeeDetails>(); 
         }
-        public void ComputeEmployeeWage()
+        public void addDetail(string companyName, int employeeRatePerHr, int maxWorkingDays, int maxWorkingHrs)
+        {
+            EmployeeDetails employee= new EmployeeDetails( companyName, employeeRatePerHr, maxWorkingDays, maxWorkingHrs);
+            this.employeeDetailsList.AddLast(employee);
+        }
+
+        public void ComputeWage()
+        {
+            foreach(EmployeeDetails employee in this.employeeDetailsList)
+            {
+                employee.SetEmployeeWage(this.ComputeEmployeeWage(employee));
+                Console.WriteLine(employee.toString());
+            }
+        }
+
+        private int ComputeEmployeeWage(EmployeeDetails details)
         {
             //initialize local variable 
             int empHrs = 0;
@@ -40,7 +45,7 @@ namespace EmployeeWagesComputation
 
 
             //Calculatin monthly Wages for 20days or for 100Hrs of work
-            while (day <= this.maxWorkingDays && workingHr < this.maxWorkingHrs)
+            while (day <= details.maxWorkingDays && workingHr < details.maxWorkingHrs)
             {
 
 
@@ -62,8 +67,8 @@ namespace EmployeeWagesComputation
                 }
 
                 //calculating Daily wages of Employee by Working Hours
-                empWages = empHrs * employeeRatePerHr;
-                monthlyWages = monthlyWages + empWages;
+                empWages = empHrs * details.employeeRatePerHr;
+                monthlyWages+= empWages;
                 workingHr += empHrs;
 
                 if (empInput != 0)
@@ -72,15 +77,11 @@ namespace EmployeeWagesComputation
                 }
 
             }
-            totalWages = monthlyWages;
+           
             Console.WriteLine("Total working days :{0} \nTotal working hours:{1}", day, workingHr);
-            Console.WriteLine("Total Employee wage for company \"{0}\" is :{1}\n\n", companyName, monthlyWages);
-            
+            return monthlyWages;
         }
 
-        public string toString()
-        {
-            return "Total Employee wage for company \"" + this.companyName + "\" is :" + this.totalWages;
-        }
+      
     }
 }

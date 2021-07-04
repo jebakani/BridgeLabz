@@ -4,9 +4,6 @@ namespace EmployeeWagesComputation
 {
     class Program
     {
-       
-
-
         /// <summary>
         /// UC1- Finding out whether employee is present or absent
         /// UC2- Calculating the daily wages of the Employee
@@ -29,14 +26,10 @@ namespace EmployeeWagesComputation
         {
             Console.WriteLine("Welcome to Employee Wages Computation");
             //creating object for each company
-            EmployeeWageBuilder reliance = new EmployeeWageBuilder("Reliance", 20, 25, 100);
-            EmployeeWageBuilder bigBazaar = new EmployeeWageBuilder("Big-Bazaar", 50, 30, 150);
-            //computing employee wages for reliance company
-            reliance.ComputeEmployeeWage();
-            Console.WriteLine(reliance.toString());
-            //computing employee wages for bigbazaar company
-            bigBazaar.ComputeEmployeeWage();
-            Console.WriteLine(bigBazaar.toString());
+            EmployeeWageBuilder employeeWage = new EmployeeWageBuilder();
+            employeeWage.addDetail("Reliance", 20, 25, 100);
+            employeeWage.addDetail("Big-Bazaar", 50, 30, 150);
+            employeeWage.ComputeWage();
             Console.Read();
         }
     }
