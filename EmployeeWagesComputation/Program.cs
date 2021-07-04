@@ -14,6 +14,9 @@ namespace EmployeeWagesComputation
         /// UC7- Computing the Employee wages using class method
         /// UC8- Computing the employee wages for multiple company
         /// UC9- Saving total wages for each company using class EmployeeBuilder
+        /// UC10-Manage multiple companies using array
+        /// UC11-Creating API procedure
+        /// UC12-Manage multiple companies using Array list
         /// </summary>
         /// <param name="args">The arguments.</param>
         /// 
